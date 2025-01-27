@@ -1,0 +1,8 @@
+Package: minimal-grub
+Version: 1.0.0
+Section: boot
+Priority: optional
+Architecture: all
+Maintainer: Michael Schaecher <mschaecher78@gmail.com>
+Description: Minimal GRUB theme
+ A minimal GRUB theme designed to keep the boot process simple and fast.
