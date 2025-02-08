@@ -4,7 +4,7 @@ title-text: ""
 desktop-color: "#000000"
 desktop-image: "background.png"
 terminal-left: "0"
-terminal-font: "Terminus Regular 14"
+terminal-font: "Terminus Regular 16"
 terminal-width: "100%"
 terminal-height: "100%"
 terminal-border: "0"
@@ -21,10 +21,10 @@ terminal-border: "0"
 
 + boot_menu {
     left = 20%
-    top = 30%
+    top = 25%
     width = 60%
-    height = 70%
-    item_font = "Unifont Regular 16"
+    height = 50%
+    item_font = "Terminus Regular 16"
     icon_width = 25
     icon_height = 25
     item_icon_space = 7

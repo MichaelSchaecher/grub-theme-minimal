@@ -14,6 +14,8 @@
 Minimal-Grub is a simple and clean Grub theme that focuses on providing a minimalistic and elegant boot menu experience. It is designed to be easy to use and customize, while still providing all the necessary functionality for booting your operating system.
 The theme features a clean and modern design, with a focus on simplicity and usability. It is fully responsive and works on all screen sizes, making it a great choice for both desktop and laptop users.
 
+![Minimal-Grub](images/png/background.png)
+
 ## Installation
 
 ### From Source
