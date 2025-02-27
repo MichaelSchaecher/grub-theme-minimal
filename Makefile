@@ -29,12 +29,12 @@ SOURCE_PATH = src
 # Build path
 BUILD_PATH = build/$(APP_NAME)-$(VERSION)
 
-BUILD_GRUB = $(BUILD_PATH)/usr/share/grub/themes/$(APP_NAME)
+BUILD_GRUB = $(BUILD_PATH)/usr/share/grub/themes/minimal
 
 export BUILD_PATH
 
 # Install path
-INSTALL_PATH = /usr
+INSTALL_PATH = /usr/share/grub/themes
 
 
 # Phony targets
@@ -52,12 +52,6 @@ debian:
 
 	@cp -vf src/debian/* $(BUILD_PATH)/DEBIAN/
 
-	@cp -av src/theme/* $(BUILD_GRUB)
-
-	@cp -av images/png/* $(BUILD_GRUB)/
-
-	@cp -av images/icons $(BUILD_GRUB)/
-
 	@sed -i "s/Version:/Version: $(VERSION)/" $(BUILD_PATH)/DEBIAN/control
 
 	@sed -i "s/Maintainer:/Maintainer: $(MAINTAINER)/" $(BUILD_PATH)/DEBIAN/control
@@ -73,15 +67,18 @@ build:
 	@echo "Building $(APP_NAME) $(VERSION)"
 	@mkdir -pv $(BUILD_GRUB)
 
+	@cp -av src/theme/* $(BUILD_GRUB)
+
+	@cp -av images/png/* $(BUILD_GRUB)/
+
+	@cp -av images/icons $(BUILD_GRUB)/
+
 install:
 
-	@cp -rvf $(BUILD_PATH)/* /
+	@cp -av $(BUILD_GRUB)/* $(INSTALL_PATH)/
 
 uninstall:
-	@rm -vf $(INSTALL_PATH)/bin/$(APP_NAME) \
-		$(INSTALL_PATH)/share/doc/$(APP_NAME)/* \
-		$(INSTALL_PATH)/share/man/man8/$(APP_NAME).8.gz \
-		$(INSTALL_PATH)/share/bash-completion/completions/$(APP_NAME)
+	@rm -vf $(INSTALL_PATH)/minimal
 
 clean:
 	@rm -Rvf ./build
@@ -90,10 +87,11 @@ help:
 	@echo "Usage: make [target] <variables>"
 	@echo ""
 	@echo "Targets:"
-	@echo "  all       - Build and install the ddns application"
-	@echo "  build     - Build the ddns application"
-	@echo "  install   - Install the ddns application"
-	@echo "  uninstall - Uninstall the ddns application"
+	@echo "  all       - Build and install the minimal grub theme"
+	@echo "  debian    - Build debian package"
+	@echo "  build     - Build the minimal grub theme"
+	@echo "  install   - Install the minimal grub theme"
+	@echo "  uninstall - Uninstall the minimal grub theme"
 	@echo "  clean     - Clean up build files"
 	@echo "  help      - Display this help message"
 	@echo ""
