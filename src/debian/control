@@ -1,9 +1,0 @@
-Package: grub-theme-minimal
-Version:
-Section: boot
-Priority: optional
-Architecture: all
-Maintainer:
-Depends: grub2-common, grub-pc, grub-common
-Description: Minimal GRUB theme
- A minimal GRUB theme designed to keep the boot process simple and fast.
