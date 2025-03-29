@@ -1,97 +1,60 @@
 #!/bin/env make -f
 
-APP_NAME = grub-theme-minimal
-VERSION = $(shell cat VERSION)
-
-DESCRIPTION = Minimal GRUB theme
+PACKAGE = $(shell basename $(shell pwd))
+VERSION = $(shell bash scripts/set-version)
 
 MAINTAINER = $(shell git config user.name) <$(shell git config user.email)>
 
-# Set priority of the package for deb package manager
-# optional, low, standard, important, required
-PRIORITY = optional
+INSTALL = dpkg-dev, git
+BUILD = debhelper (>= 11), git, make (>= 4.1), dpkg-dev
 
-# dpkg Section option
-SECTION = boot
+HOMEPAGE = https://github.com/MichaelSchaecher/$(PACKAGE)
 
-# Architecture (amd64, i386, armhf, arm64, ... all)
-AARCH = all
+PACKAGE_DIR = package
 
-export APP_NAME VERSION DESCRIPTION APP_DEP AARCH PRIORITY SECTION MAINTAINER
+ARCH = $(shell dpkg --print-architecture)
 
-ROOT_DIR = $(shell pwd)
-
-export ROOT_DIR
-
-# Source path
-SOURCE_PATH = src
-
-# Build path
-BUILD_PATH = build/$(APP_NAME)-$(VERSION)
-
-BUILD_GRUB = $(BUILD_PATH)/usr/share/grub/themes/minimal
-
-export BUILD_PATH
-
-# Install path
-INSTALL_PATH = /usr/share/grub/themes
-
+export PACKAGE_DIR PACKAGE VERSION MAINTAINER INSTALL BUILD HOMEPAGE ARCH
 
 # Phony targets
-.PHONY: install clean build
+.PHONY: all debian clean help
 
 # Default target
-all: build install
+all: debian
 
 debian:
-	make build
 
-	@echo "Building debian package"
+	@echo "Building package $(PACKAGE) version $(VERSION)"
 
-	@mkdir -pv $(BUILD_PATH)/DEBIAN
+	@echo "$(VERSION)" > $(PACKAGE_DIR)/usr/share/doc/$(PACKAGE)/version
 
-	@cp -vf src/debian/* $(BUILD_PATH)/DEBIAN/
+	@scripts/set-control
+	@scripts/sum
 
-	@sed -i "s/Version:/Version: $(VERSION)/" $(BUILD_PATH)/DEBIAN/control
+	@dpkg-changelog $(PACKAGE_DIR)/DEBIAN/changelog
+	@dpkg-changelog $(PACKAGE_DIR)/usr/share/doc/$(PACKAGE)/changelog
+	@gzip -d $(PACKAGE_DIR)/DEBIAN/*.gz
+	@mv $(PACKAGE_DIR)/DEBIAN/changelog.DEBIAN $(PACKAGE_DIR)/DEBIAN/changelog
 
-	@sed -i "s/Maintainer:/Maintainer: $(MAINTAINER)/" $(BUILD_PATH)/DEBIAN/control
-
-	@git-changelog $(BUILD_PATH)/DEBIAN/changelog
-	@gzip -dv $(BUILD_PATH)/DEBIAN/changelog.gz
-
-	@dpkg-deb --root-owner-group --build $(BUILD_PATH) build/$(APP_NAME)_$(VERSION)_all.deb
-
-# Install the bash script
-build:
-
-	@echo "Building $(APP_NAME) $(VERSION)"
-	@mkdir -pv $(BUILD_GRUB)
-
-	@cp -av src/theme/* $(BUILD_GRUB)
-
-	@cp -av images/png/* $(BUILD_GRUB)/
-
-	@cp -av images/icons $(BUILD_GRUB)/
+	@scripts/mkdeb
 
 install:
 
-	@cp -av $(BUILD_GRUB)/* $(INSTALL_PATH)/
-
-uninstall:
-	@rm -vf $(INSTALL_PATH)/minimal
+	@dpkg -i $(PACKAGE)_$(VERSION)_$(ARCH).deb
 
 clean:
-	@rm -Rvf ./build
+	@rm -vf $(PACKAGE_DIR)/DEBIAN/control \
+		$(PACKAGE_DIR)/DEBIAN/changelog \
+		$(PACKAGE_DIR)/DEBIAN/md5sums \
+		$(PACKAGE_DIR)/usr/share/doc/$(PACKAGE)/*.gz
 
 help:
 	@echo "Usage: make [target] <variables>"
 	@echo ""
 	@echo "Targets:"
-	@echo "  all       - Build and install the minimal grub theme"
-	@echo "  debian    - Build debian package"
-	@echo "  build     - Build the minimal grub theme"
-	@echo "  install   - Install the minimal grub theme"
-	@echo "  uninstall - Uninstall the minimal grub theme"
+	@echo "  all       - Build the debian package and install it"
+	@echo "  debian    - Build the debian package"
+	@echo "  install   - Install the debian package"
 	@echo "  clean     - Clean up build files"
 	@echo "  help      - Display this help message"
 	@echo ""
