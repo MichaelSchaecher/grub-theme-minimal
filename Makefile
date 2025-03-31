@@ -5,7 +5,7 @@ VERSION = $(shell bash scripts/set-version)
 
 MAINTAINER = $(shell git config user.name) <$(shell git config user.email)>
 
-INSTALL = dpkg-dev, git
+INSTALL = grub2-common, grub-common
 BUILD = debhelper (>= 11), git, make (>= 4.1), dpkg-dev
 
 HOMEPAGE = https://github.com/MichaelSchaecher/$(PACKAGE)
@@ -36,7 +36,14 @@ debian:
 	@gzip -d $(PACKAGE_DIR)/DEBIAN/*.gz
 	@mv $(PACKAGE_DIR)/DEBIAN/changelog.DEBIAN $(PACKAGE_DIR)/DEBIAN/changelog
 
+	@scripts/set-control
+	@scripts/gen-chsums
+
+ifeq ($(FORCE_DEB),yes)
+	@scripts/mkdeb --force
+else
 	@scripts/mkdeb
+endif
 
 install:
 

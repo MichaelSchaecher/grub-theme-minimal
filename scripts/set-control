@@ -25,6 +25,7 @@ Architecture: amd64
 Depends: ${INSTALL}
 Conflicts: ${CONFLICTS}
 Build-Depends: ${BUILD}
-Description: Minimal theme for Grub -
-    This package provides a minimal theme for Grub.
+Description: Manage BTRFS snapshots simply -
+    If you are using the BTRFS filesystem the way it was intended.
+    NOTE: This package is not compatible with Timeshift.
 EOF
