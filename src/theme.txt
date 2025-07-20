@@ -1,10 +1,9 @@
-# Copyright (c) 2024 Michael Schaecher <mschaecher78@gmail.com> under the MIT License
+# Copyright (c) 2025 Michael Schaecher <mschaecher78@gmail.com>
 
 title-text: ""
-desktop-color: "#000000"
-desktop-image: "background.png"
+desktop-image: "background/background.png"
 terminal-left: "0"
-terminal-font: "Terminus Regular 16"
+terminal-font: "fonts/Terminus Regular 16"
 terminal-width: "100%"
 terminal-height: "100%"
 terminal-border: "0"
@@ -24,15 +23,15 @@ terminal-border: "0"
     left = 25
     width = 50%
     height = 50%
-    item_font = "Terminus Regular 16"
+    item_font = "fonts/Terminus Regular 16"
     icon_width = 25
     icon_height = 25
     item_icon_space = 7
     item_height = 30
     item_spacing = 5
     item_color = "#ddd"
-    item_pixmap_style = "item_*.png"
+    item_pixmap_style = "assets/item_*.png"
     selected_item_color = "#fff"
-    selected_item_pixmap_style = "selected_*.png"
+    selected_item_pixmap_style = "assets/selected_*.png"
 }
 
