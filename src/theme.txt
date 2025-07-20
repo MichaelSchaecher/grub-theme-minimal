@@ -12,9 +12,9 @@ terminal-border: "0"
     id = "__timeout__"
     text = "Booting in %d seconds"
     top = 15%
-    left = 0
-    width = 100%
-    align = "center"
+    left = 25%
+    width = 50%
+    height = 50%
     color = "#ddd"
 }
 
@@ -30,8 +30,8 @@ terminal-border: "0"
     item_height = 30
     item_spacing = 5
     item_color = "#ddd"
-    item_pixmap_style = "assets/item_*.png"
+    item_pixmap_style = "images/item_*.png"
     selected_item_color = "#fff"
-    selected_item_pixmap_style = "assets/selected_*.png"
+    selected_item_pixmap_style = "images/selected_*.png"
 }
 
