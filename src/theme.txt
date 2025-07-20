@@ -8,20 +8,24 @@ terminal-width: "100%"
 terminal-height: "100%"
 terminal-border: "0"
 
-+ label {
-    id = "__timeout__"
-    text = "Booting in %d seconds"
-    top = 15%
-    left = 25%
-    width = 50%
-    height = 50%
-    color = "#ddd"
+# Show a styled horizontal progress bar
++ progress_bar {
+		id = "__timeout__"
+		left = 0%
+		width = 100%
+		top = 0
+		height = 23
+		text_color = "255, 255, 255"
+		text = ""
+		bar_style = "images/progress_bar_*.png"
+		highlight_style = "images/progress_highlight_*.png"
 }
 
+# Show the boot menu
 + boot_menu {
     top = 25%
-    left = 25
-    width = 50%
+    left = 30%
+    width = 40%
     height = 50%
     item_font = "fonts/Terminus Regular 16"
     icon_width = 25
