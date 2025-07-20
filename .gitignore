@@ -1,12 +1,23 @@
 .vscode/
 
 build/
+dist/
+
+changelog
 
 *.gz
-*.xz
 *.deb
-*.tar
-package/DEBIAN/control
-package/DEBIAN/changelog
-version
-md5sums
+
+# Ignore the following from the `debian` directory since
+# they are generated during the build process and should
+# not be committed to the repository.
+debian/.debhelper/
+debian/files
+debian/*.ex
+debian/*.debhelper
+debian/*.substvars
+debian/grub-btrfsd/
+
+doc/version
+man/grub-btrfsd.conf.5
+man/grub-btrfsd.1
