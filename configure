@@ -105,11 +105,13 @@ function build_deb () {
         exit 1
     fi
 
-    for m in man/*.md; do
-        base=$(basename "$m" .md)
-        out="man/${base}"
-        pandoc "$m" -s -t man -o "$out"
-    done
+    if [ -d man ] ; then
+        for m in man/*.md; do
+            base=$(basename "$m" .md)
+            out="man/${base}"
+            pandoc "$m" -s -t man -o "$out"
+        done
+    fi
 
     dh_gitchangelog
 
