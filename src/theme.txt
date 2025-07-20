@@ -1,7 +1,7 @@
 # Copyright (c) 2025 Michael Schaecher <mschaecher78@gmail.com>
 
 title-text: ""
-desktop-image: "background/background.png"
+desktop-image: "images/background.png"
 terminal-left: "0"
 terminal-font: "fonts/Terminus Regular 16"
 terminal-width: "100%"
