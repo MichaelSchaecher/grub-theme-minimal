@@ -16,8 +16,8 @@ debian/files
 debian/*.ex
 debian/*.debhelper
 debian/*.substvars
-debian/grub-btrfsd/
+debian/grub-theme-minimal/
 
 doc/version
-man/grub-btrfsd.conf.5
-man/grub-btrfsd.1
+man/grub-theme-minimal.conf.5
+man/grub-theme-minimal.1
