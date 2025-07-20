@@ -1,0 +1,24 @@
+Source: grub-theme-minimal
+Section: admin
+Priority: optional
+Maintainer: Michael Schaecher <michaelleeschaecher@gmail.com>
+Rules-Requires-Root: no
+Build-Depends:
+ debhelper-compat (= 13), dh-make, git, dh-gitchangelog
+Standards-Version: 4.6.2
+Homepage: https://github.com/MichaelSchaecher/grub-theme-minimal
+Vcs-Browser: https://github.com/MichaelSchaecher/grub-theme-minimal
+Vcs-Git: https://github.com/MichaelSchaecher/grub-theme-minimal.git
+
+Package: grub-theme-minimal
+Architecture: any
+Multi-Arch: foreign
+Depends:
+ grub-common, grub2-common
+Description: Minimalistic GRUB theme
+ This is a minimalistic GRUB theme that provides a clean and simple interface
+ for the GRUB bootloader. It is designed to be lightweight and easy to use,
+ while still providing essential functionality.
+ .
+ The theme includes basic styling and layout for the GRUB menu, making it
+ suitable for users who prefer a straightforward boot experience.
