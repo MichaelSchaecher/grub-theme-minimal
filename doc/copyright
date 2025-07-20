@@ -1,0 +1,53 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Source: https://github.com/MichaelSchaecher/grub-theme-mininimal
+Upstream-Name: grub-theme-mininimal
+Upstream-Contact: Michael Schaecher <michaelleeschaecher@gamil.com>
+
+Files:
+ *
+
+Copyright:
+ 2025 Michael Schaecher <michaelleeschaecher@gmail.com>
+
+License: GPL-3.0+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+ .
+ This package is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+Comment:
+ On Debian systems, the complete text of the GNU General
+ Public License version 3 can be found in "/usr/share/common-licenses/GPL-3".
+ .
+ Please also look if there are files or directories which have a
+ different copyright/license attached and list them here.
+
+License: CC-BY-SA-4.0
+ SPDX-License-Identifier: CC-BY-SA-4.0
+ This work is licensed under the Creative Commons Attribution-ShareAlike
+ 4.0 International License. You may obtain a copy of the License at
+ <https://creativecommons.org/licenses/by-sa/4.0/>.
+ .
+ SPDX-License-Identifier: CC-BY-SA-4.0
+ .
+ This license applies to the following files:
+ * /usr/share/grub/themes/mininimal/background/*
+ * /usr/share/grub/themes/mininimal/fonts/*
+ * /usr/share/grub/themes/mininimal/icons/*
+ * /usr/share/grub/themes/mininimal/assets/*
+
+Comment:
+    The above files are licensed under CC-BY-SA-4.0, which allows for
+    redistribution and modification under the same license terms, provided
+    that appropriate credit is given, and any derivative works are also
+    shared under the same license.
+    .
+    Please ensure to include the appropriate attribution in your derived works.
